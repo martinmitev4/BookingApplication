@@ -27,4 +27,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: martin0411/kiii_lab5:latest
+          tags: martin0411/bookingapplication:latest
