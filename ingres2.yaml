@@ -1,0 +1,45 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: mcu-all
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+      - /booking
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mcu-all
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    traefik.ingress.kubernetes.io/router.middlewares: default-mcu-all@kubernetescrd
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /shield
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+      - path: /hydra
+        pathType: Prefix
+        backend:
+          service:
+            name: postgres-service
+            port:
+              number: 80
+  - host: booking.mcu.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80

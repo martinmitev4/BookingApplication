@@ -22,10 +22,6 @@ services:
       POSTGRES_PASSWORD: "martin123"
     expose:
       - 5432
-#     healthcheck:
-#       test: [ "CMD", "pg_isready" ]
-#       interval: 10s
-#       timeout: 5s
-#       retries: 5
+
 volumes:
   db-data:
