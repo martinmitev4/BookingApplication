@@ -4,7 +4,7 @@ metadata:
   name: pvc
   namespace: kiii-proekt
   labels:
-    name: postgres
+    app: postgres
 spec:
   accessModes:
     - ReadWriteOnce

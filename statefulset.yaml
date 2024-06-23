@@ -4,7 +4,7 @@ metadata:
   name: statefulset
   namespace: kiii-proekt
 spec:
-  serviceName: postgres-service
+  serviceName: db
   selector:
     matchLabels:
       app: postgres

@@ -4,6 +4,6 @@ metadata:
   name: config
   namespace: kiii-proekt
 data:
-  POSTGRES_DB: BookinkApplikationDB
-  POSTGRES_USER: postgres
+  POSTGRES_DB: "BookingApplicationDB"
+  POSTGRES_USER: "postgres"
 

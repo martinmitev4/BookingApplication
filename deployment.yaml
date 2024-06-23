@@ -4,7 +4,7 @@ metadata:
   name: deployment
   namespace: kiii-proekt
 spec:
-  replicas: 5
+  replicas: 2
   selector:
     matchLabels:
       name: booking
@@ -22,13 +22,22 @@ spec:
               memory: "128Mi"
               cpu: "500m"
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: config
           env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kiii-secret
                   key: password
+          volumeMounts:
+          - name: keys
+            mountPath: /keys
+      volumes:
+      - name: keys
+        persistentVolumeClaim:
+          claimName: keys-pvc
