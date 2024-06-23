@@ -52,7 +52,7 @@ namespace BookingApplication.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,ApartmentName,City,Description,Price_per_night,Rating")] BA.Domain.Domain.Apartment apartment)
         {
             if (ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace BookingApplication.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public IActionResult Edit(Guid id, [Bind("Id,ApartmentName,City,Description,Price_per_night,Rating")] Apartment apartment)
         {
             if (id != apartment.Id)
@@ -133,7 +133,7 @@ namespace BookingApplication.Controllers
 
         // POST: Apartments/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(Guid id)
         {
             var apartment = _apartmentService.GetApartmentById(id);
