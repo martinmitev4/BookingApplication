@@ -6,6 +6,7 @@ using BA.Service.Implementation;
 using BA.Service.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Options;
 using NuGet.Protocol.Core.Types;
 using System.Configuration;
@@ -22,6 +23,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
            options.UseNpgsql(connectionString));
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+           options.UseNpgsql(connectionString));
+
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
